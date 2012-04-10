@@ -1,0 +1,40 @@
+check section validity in commands file
+=======================================
+- prev_subsection = null
+- sub_sections = split file by FILTER / ACTION / ORDER (non case-sensitive)
+- set flag has_action=false
+- for each sub_section
+  - lines = split subsection by \n
+  - subsection name match the previous one by logic (err7). then update prev_subsection=subsection
+    (logic:  null>FILTER, FILTER>ACTION, ACTION>ORDER/FILTER, ORDER>FILTER)
+  - commands_num=0
+  - switch subsection_name (lines[0])
+    - FILTER
+      - subsection name match the previous one by logic.
+      - for each line (lines[1..n]):
+        - if comment - skip
+        - commands_num++
+        - conditions = split line by ' '
+        - for each condition
+          - check validity (condition) (err4,err5)
+      - check commands_num>0
+
+    - ACTION
+      - subsection name match the previous one by logic.
+      - for each line (lines[1..n]):
+        - if comment - skip
+        - commands_num++
+        - check validity (line) (err4,err5,err6)
+      - check commands_num>0
+
+    - ORDER
+      - subsection name match the previous one by logic.
+      - for each line (lines[1..n]):
+        - if comment - skip
+        - commands_num++
+        - check validity (line) (err4,err5)
+      - check commands_num<=1
+
+    - default
+      - incorrect sub-section name (err3)
+- check has_action=true (err7)

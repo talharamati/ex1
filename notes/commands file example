@@ -1,0 +1,16 @@
+FILTER
+$ comment
+smaller_than%256 before%29/01/2012
+suffix%.tmp
+
+AcTION
+print_data
+exec%YES
+copy%dir1/dir2/
+
+ORDeR
+mod
+
+FILTER\nlaksjf; lsajfas;lkdj ;alsdk fj\nasd asd a\n
+ACTION\nasd \nasd as\n
+ORDER\naasda\nsd
