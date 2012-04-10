@@ -12,9 +12,9 @@
     - filtered_files = filter( section['filters'], files)
     - print filter comments
     - filtered_files = re_order( section['order'], filtered_files)
-    - print filter comments
+    - print order comments
     - do_actions( section['actions'], filtered_files)
-    - print filter comments
+    - print action comments
   -
 
 
